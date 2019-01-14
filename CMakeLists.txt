@@ -36,6 +36,20 @@ FUNCTION(COLLECT_SRC_FROM_DIRS DIRS)
   ENDFOREACH()
   SET(SOURCE_FILES ${SOURCE_FILES_LIST} PARENT_SCOPE)
 ENDFUNCTION()# 
+
+FUNCTION(COLLECT_GLSL_FROM_DIRS DIRS)
+  FOREACH(folder ${${DIRS}})
+    FILE(
+      GLOB
+      source_files_one_dir
+	  ${folder}/[^.]*.glsl
+    )
+    LIST(APPEND SOURCE_FILES_LIST ${source_files_one_dir})
+	# MESSAGE(WARNING "folder: ${folder}")
+	# MESSAGE(WARNING "source_files_one_dir: ${source_files_one_dir}")
+  ENDFOREACH()
+  SET(GLSL_FILES ${SOURCE_FILES_LIST} PARENT_SCOPE)
+ENDFUNCTION()# 
 # -----------------------------------------------------------------------------
 FUNCTION(COLLECT_DDL_FROM_FILES  files_list) 
   FOREACH(f ${${files_list}})
@@ -50,10 +64,6 @@ FUNCTION(COLLECT_DDL_FROM_FILES  files_list)
           LIST(APPEND dlls_list ${all_f})
         ENDIF()
 	  ELSEIF(${f_ext} STREQUAL ".ptx")
-        IF(WIN32)
-          LIST(APPEND dlls_list ${f})
-        ENDIF()
-	  ELSEIF(${f_ext} STREQUAL ".glsl")
         IF(WIN32)
           LIST(APPEND dlls_list ${f})
         ENDIF()

@@ -32,17 +32,17 @@ IF (WIN32)
             ${GLEW_LOCATION}
             $ENV{GLEW_LOCATION}
             DOC "The directory where GL/glew.h resides" )
-    find_file( GLEW_SOURCE
-        NAMES
-            glew.c
-        PATHS
-            ${GLEW_LOCATION}/src
-            ${GLEW_LOCATION}/src
-            $ENV{GLEW_LOCATION}/src
-            $ENV{PROGRAMFILES}/GLEW/src
-            ${GLEW_LOCATION}
-            $ENV{GLEW_LOCATION}
-            DOC "The directory where GL/glew.c resides" )
+    # find_file( GLEW_SOURCE
+        # NAMES
+            # glew.c
+        # PATHS
+            # ${GLEW_LOCATION}/src
+            # ${GLEW_LOCATION}/src
+            # $ENV{GLEW_LOCATION}/src
+            # $ENV{PROGRAMFILES}/GLEW/src
+            # ${GLEW_LOCATION}
+            # $ENV{GLEW_LOCATION}
+            # DOC "The directory where GL/glew.c resides" )
     IF(ARCH STREQUAL "x86")
       find_library( GLEW_LIBRARY
           NAMES
