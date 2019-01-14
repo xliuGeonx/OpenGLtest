@@ -1,4 +1,4 @@
-# GVDBX 2018
+# OpenGLTest 2019
 # Developped By Trigolds
 # Project CMakeLists
 # -----------------------------------------------------------------------------
@@ -10,14 +10,11 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.1)
 # -----------------------------------------------------------------------------
 # ------------------------- Functions and macro -------------------------------
 # -----------------------------------------------------------------------------
-MACRO(opt OPTION HELP VALUE)
- OPTION(BARRACUDA_USE_${OPTION} ${HELP} ${VALUE})
- SET(OPT_TEXI "${OPT_TEXI}\n@item BARRACUDA_USE_${OPTION}\n${HELP} (default: ${VALUE})")
-ENDMACRO(opt)
-MACRO(optpp OPTION HELP VALUE)
- OPTION(POSTPRO_USE_${OPTION} ${HELP} ${VALUE})
- SET(OPT_TEXIP "${OPT_TEXIP}\n@item POSTPRO_USE_${OPTION}\n${HELP} (default: ${VALUE})")
-ENDMACRO(optpp)
+PROJECT(OpenGLTest)
+MACRO(OPT OPTION HELP VALUE)
+ OPTION(${PROJECTNAME}_USE_${OPTION} ${HELP} ${VALUE})
+ SET(OPT_TEXI "${OPT_TEXI}\n@item OpenGLTest_USE_${OPTION}\n${HELP} (default: ${VALUE})")
+ENDMACRO(OPT)
 
 FUNCTION(COLLECT_SRC_FROM_DIRS DIRS)
   FOREACH(folder ${${DIRS}})
@@ -96,9 +93,9 @@ if(NOT PROJECT_DIRECTORY)
 endif()
 # MESSAGE(WARNING "PROJECT_DIRECTORY: ${PROJECT_DIRECTORY}" )
 # Additional folders to search for CMake modules
-SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_DIRECTORY}/cmake/Modules")
+SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_DIRECTORY}/cmake/Modules)
 # Define project with default languages (C and CXX)
-PROJECT(GVDBX)
+
 # -----------------------------------------------------------------------------
 # ----------------------------- Project configuration -------------------------
 # -----------------------------------------------------------------------------
@@ -140,10 +137,14 @@ IF(NOT Boost_USE_STATIC_LIBS )
   COLLECT_DDL_FROM_FILES(BOOST_DLLS)
 ENDIF()
 
+#	find glew
+FIND_PACKAGE(GLEW REQUIRED)
+FIND_PACKAGE(GLFW REQUIRED)
+
 # -- Include contributes --
-if ( NOT DEFINED CONTRIB_ROOT_DIR )
-  MESSAGE(FATAL_ERROR "CONTRIB_ROOT_DIR is not defined" )
+if ( NOT DEFINED CONTRIB_ROOT )
+  MESSAGE(FATAL_ERROR "CONTRIB_ROOT is not defined" )
 endif()
 
 # -- Include directories --
-ADD_SUBDIRECTORY(gvdb)
+ADD_SUBDIRECTORY(TestCases)
