@@ -5,7 +5,7 @@
 # -----------------------------------------------------------------------------
 
 # Environment
-SET(TestName Test2_layout)
+SET(TestName Test2_uniform)
 SET(TestName ${TestName} PARENT_SCOPE)
 Message(STATUS "-------------------------------")
 Message(STATUS "Processing TestCase ${TestName}:")

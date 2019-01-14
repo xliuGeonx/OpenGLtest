@@ -38,3 +38,5 @@ ELSE()
     ADD_CUSTOM_COMMAND(TARGET ${TestName} POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy ${f} $<TARGET_FILE_DIR:${TestName}> )  
 	ENDFOREACH()
 ENDIF()
+
+Message(STATUS "Done TestCase ${TestName}:")
