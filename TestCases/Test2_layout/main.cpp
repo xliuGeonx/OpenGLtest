@@ -22,7 +22,7 @@ int main()
   //glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); // We don't want the old OpenGL 
 
   //  create a window obj
-  GLFWwindow* window = glfwCreateWindow(1024, 768, "LearnOpenGL", NULL, NULL);
+  GLFWwindow* window = glfwCreateWindow(1024, 768, "Test2 layout GSLS", NULL, NULL);
   if (window == NULL)
   {
     std::cout << "Failed to create a GLFW window\n";

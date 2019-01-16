@@ -1,14 +1,12 @@
 #version 330 core
 
-// Ouput data
+// Output data
 out vec3 color;
-
-uniform vec3 VertexColor;
 
 void main()
 {
 
 	// Output color = red 
-	color = VertexColor;
+	color = vec3(1,0,0);
 
 }
