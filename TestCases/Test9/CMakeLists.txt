@@ -5,7 +5,7 @@
 # -----------------------------------------------------------------------------
 
 # Environment
-SET(TestName Test5)
+SET(TestName Test9)
 SET(TestName ${TestName} PARENT_SCOPE)
 Message(STATUS "-------------------------------")
 Message(STATUS "Processing TestCase ${TestName}:")
@@ -33,9 +33,11 @@ ELSE()
 # -- copy dll collection
 	SET(GLSL_REF ${CMAKE_CURRENT_SOURCE_DIR}/glsl)
 	LIST(APPEND GLSL_LIST ${GLSL_REF})
-	SET(UV_TMP ${CMAKE_CURRENT_SOURCE_DIR}/uvtemplate.bmp)
+	SET(UV_TMP ${CMAKE_CURRENT_SOURCE_DIR}/uvmap.dds)
+	#SET(CUBE_OBJ ${CMAKE_CURRENT_SOURCE_DIR}/cube.obj)
+	SET(suzanne_OBJ ${CMAKE_CURRENT_SOURCE_DIR}/suzanne.obj)
 	COLLECT_GLSL_FROM_DIRS(GLSL_LIST)
-	LIST(APPEND DLLs ${GLEW_DLL} ${USED_DLLS} ${GLSL_FILES} ${UV_TMP})
+	LIST(APPEND DLLs ${GLEW_DLL} ${USED_DLLS} ${GLSL_FILES} ${UV_TMP} ${suzanne_OBJ})
 	FOREACH( f ${DLLs})
     ADD_CUSTOM_COMMAND(TARGET ${TestName} POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy ${f} $<TARGET_FILE_DIR:${TestName}> )  
 	ENDFOREACH()
